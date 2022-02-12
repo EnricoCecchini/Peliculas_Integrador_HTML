@@ -1,8 +1,16 @@
-const getAll = async() => {
-    const API = 'http://127.0.0.1:5000/dashboard'
+const API = 'http://127.0.0.1:5000/dashboard'
 
-    document.write(fetch(API)
-    .then(res => res.json())
-    .then((r) => console.log(r))
-    .catch((e) => console.log(e)))
+fetch(API)
+.then((res) => {return res.json()})
+.then((p) => appendMovies(p))
+.catch((e) => console.log(e))
+
+function appendMovies(pelicula) {
+    var mainContainer = document.getElementById("peliculas")
+
+    for (var i = 0; i < pelicula.length; i++) {
+        let div = document.createElement('div')
+        div.innerHTML = 'Pelicula' + pelicla[i].titulo
+        mainContainer.appendChild(div)
+    }
 }

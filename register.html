@@ -3,13 +3,15 @@
 <link rel="stylesheet" href="./styles.css">
 
 <head>
-    <title>Chaks Movie Catalogue</title>
+    <title>Chak's Movie Catalogue</title>
 </head>
     <body class="body">
-        <div class="div-1">
-            <a href="./Index.html">
-                <h1 class="head">Chaks Movie Catalogue</h1>
-            </a>
+        <a href="./Index.html">
+            <div class="head">
+                <h1>Chak's Movie Catalogue</h1>
+            </div>
+        </a>
+        <div class="divSearch">
             <form action="http://127.0.0.1:5000/buscar">
                 <label for="Search" aria-placeholder="param"></label>
                 <input type="text" id="Search" name="Search">
@@ -17,7 +19,7 @@
             </form>
         </div>
         <div>
-            <h2>Registrar Pelicula</h2>
+            <h2 class="pageTitle">Registrar Pelicula</h2>
         </div>
         <form action="http://127.0.0.1:5000/registrar_pelicula">
             <label for="titulo">Titulo:</label>
@@ -36,8 +38,9 @@
                     <option value="3">Terror</option>
                 </select>
                 <br><br>
-            <label for="protag">Protagonistas (Separar por ','):</label>
-            <input type="text" id="protag" name="protag"><br><br>
+            <label for="protag">Protagonistas (Separar por ','):</label><br>
+            <textarea id="protag" name="protag" rows="4" cols="50"></textarea>
+            <br><br>
             <input type="submit" value="Submit">
         </form>
     </body>
