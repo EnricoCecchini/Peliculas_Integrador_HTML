@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="eng">
+<link rel="stylesheet" href="./styles.css">
+
+<head>
+    <title>Chaks Movie Catalogue</title>
+</head>
+    <body class="body">
+        <div class="div-1">
+            <h1 class="head">Chaks Movie Catalogue</h1>
+            <form action="http://127.0.0.1:5000/buscar">
+                <label for="Search" aria-placeholder="param"></label>
+                <input type="text" id="param" name="param">
+                <input type="submit" value="param">
+            </form>
+        </div>
+        <div>
+            <a href="./peliculas.html">
+                <h2>Peliculas</h2>
+            </a>
+            <a href="./register.html">
+                <h3>Registrar Pelicula</h3>
+            </a>
+            <h3>Categorias</h3>
+            <form action="http://127.0.0.1:5000/dashboard_filtrado">
+                <label for="Categoria"></label>
+                <select name="cat" id="cat">
+                    <option value="1">Amor</option>
+                    <option value="2">Accion</option>
+                    <option value="3">Terror</option>
+                </select>
+                <input type="submit" value="Search">
+            </form>
+        </div>
+    </body>
+</html>

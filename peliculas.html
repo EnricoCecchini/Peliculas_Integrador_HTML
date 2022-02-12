@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="eng">
+<link rel="stylesheet" href="./styles.css">
+
+<head>
+    <title>Chaks Movie Catalogue</title>
+</head>
+    <body class="body">
+        <div class="div-1">
+            <a href="./Index.html">
+                <h1 class="head">Chaks Movie Catalogue</h1>
+            </a>
+            <form action="http://127.0.0.1:5000/buscar">
+                <label for="Search" aria-placeholder="param"></label>
+                <input type="text" id="param" name="param">
+                <input type="submit" value="param">
+            </form>
+        </div>
+        <div>
+            <h2>Peliculas</h2>
+            <script type="text/javascript">
+                const API = 'http://127.0.0.1:5000/dashboard'
+
+                const peliculas = fetch(API)
+                .then(res => res.json())
+                .then((r) => console.log(r))
+                .catch((e) => console.log(e))
+
+                peliculas.map((peli) =>
+                {console.log('Peli', peli.titulo)}
+                )
+
+                //console.log(peliculas.peliculas)
+            </script>
+        </div>
+    </body>
+</html>

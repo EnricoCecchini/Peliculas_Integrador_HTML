@@ -1,0 +1,14 @@
+.body {
+    background-color: bisque;
+}
+
+.head {
+    text-align: center;
+}
+
+.div-1 {
+    flex-direction: row;
+    justify-content: space-around;
+    display: inline-block;
+    vertical-align: top;
+}
