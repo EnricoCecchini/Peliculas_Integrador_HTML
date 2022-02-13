@@ -25,7 +25,7 @@
             <script type="text/javascript">
                 
                 let categoriaID = localStorage.getItem('categoriaID')
-                localStorage.removeItem("categoriaID")
+                //localStorage.removeItem("categoriaID")
                 //console.log(categoriaID)
                 
                 const API = `http://127.0.0.1:5000/dashboard_filtrado?cat=${categoriaID}`
@@ -42,7 +42,7 @@
                         let div = document.createElement('div')
                         let pid = peliculas[i].peliculaID
                         div.className = 'grid-item'
-                        div.setAttribute('src', `http://127.0.0.1:5000/get_pelicula?pid=${pid}`)
+                        //div.setAttribute('src', `http://127.0.0.1:5000/get_pelicula?pid=${pid}`)
                         div.innerHTML += 'Pelicula: '.bold() + peliculas[i].titulo + '<br>'
                         div.innerHTML += 'Director: '.bold() + peliculas[i].director + '<br>'
                         div.innerHTML += 'Anio: '.bold() + peliculas[i].anio + '<br>'

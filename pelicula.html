@@ -43,8 +43,6 @@
                 .catch((e) => console.log(e))
 
                 function editPelicula(pelicula) {  
-                    let pt = pelicula.titulo
-                    console.log(pt)
                     let datos = document.getElementById('pelicula')
 
                     let form = document.createElement('form')
@@ -58,10 +56,43 @@
                     let titulo = document.createElement('input')
                     titulo.setAttribute('type', 'text')
                     titulo.setAttribute('titulo', 'Titulo')
-                    titulo.setAttribute('placeholder', {pt})
+                    titulo.setAttribute('placeholder', `${pelicula.titulo}`)
 
+                    let director = document.createElement('input')
+                    director.setAttribute('type', 'text')
+                    director.setAttribute('director', 'Director')
+                    director.setAttribute('placeholder', `${pelicula.director}`)
+
+                    let categoria = document.createElement('input')
+                    categoria.setAttribute('type', 'text')
+                    categoria.setAttribute('categoria', 'Categoria')
+                    categoria.setAttribute('placeholder', `${pelicula.categoria}`)
+
+                    let duracion = document.createElement('input')
+                    duracion.setAttribute('type', 'text')
+                    duracion.setAttribute('duracion', 'Duracion')
+                    duracion.setAttribute('placeholder', `${pelicula.duracion} horas`)
+
+                    let anio = document.createElement('input')
+                    anio.setAttribute('type', 'text')
+                    anio.setAttribute('anio', 'Anio')
+                    anio.setAttribute('placeholder', `${pelicula.anio}`)
+
+                    form.innerHTML = 'Titulo: '
                     form.appendChild(titulo)
                     form.innerHTML += '<br><br>'
+                    form.innerHTML += 'Director: '
+                    form.appendChild(director)
+                    form.innerHTML += '<br><br>'
+                    form.innerHTML += 'Categoria: '
+                    form.appendChild(categoria)
+                    form.innerHTML += '<br><br>'
+                    form.innerHTML += 'Duracion: '
+                    form.appendChild(duracion)
+                    form.innerHTML += '<br><br>'
+                    form.innerHTML += 'Anio: '
+                    form.appendChild(anio)
+                    form.innerHTML += '<br><br><br><br>'
                     form.appendChild(edit)
 
                     document.getElementsByTagName("body")[0].appendChild(form)

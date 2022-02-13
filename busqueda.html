@@ -34,7 +34,7 @@
                 
                 let param = localStorage.getItem('busquedaParam')
                 console.log(param)
-                //localStorage.removeItem("busquedaParam")
+                localStorage.removeItem("busquedaParam")
                 
                 const API = `http://127.0.0.1:5000/buscar?param=${param}`
                 console.log(API)
@@ -48,8 +48,9 @@
 
                     for (var i = 0; i < peliculas.length; i++) {
                         let div = document.createElement('div')
+                        let pid = peliculas[i].peliculaID
                         div.className = 'grid-item'
-                        div.setAttribute('src', `http://127.0.0.1:5000/get_pelicula?pid=${peliculas[i].peliculaID}`)
+                        //div.setAttribute('src', `http://127.0.0.1:5000/get_pelicula?pid=${peliculas[i].peliculaID}`)
                         div.innerHTML += 'Pelicula: '.bold() + peliculas[i].titulo + '<br>'
                         div.innerHTML += 'Director: '.bold() + peliculas[i].director + '<br>'
                         div.innerHTML += 'Anio: '.bold() + peliculas[i].anio + '<br>'
@@ -63,11 +64,18 @@
                         // }
 
                         div.innerHTML += '<br><br>' 
-                        let link = document.createElement('a')
-                        link.href=`http://127.0.0.1:5000/get_pelicula?pid=${peliculas[i].peliculaID}`
-                        link.className = 'edit-button'
-                        link.text = 'Edit'
-                        div.append(link)
+                        let editButton = document.createElement('button')
+                        editButton.className= 'edit-button'
+                        editButton.innerHTML = 'Edit'
+                        editButton.id = 'pid'
+                        editButton.onclick= function () {
+                            console.log(pid)
+                            localStorage.setItem('pid', pid)
+                            console.log(pid)
+                            location.href = './pelicula.html'
+                            return false
+                        }
+                        div.append(editButton)
                         mainContainer.appendChild(div)
                     }
                 }
