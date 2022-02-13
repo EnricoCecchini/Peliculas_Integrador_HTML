@@ -48,12 +48,12 @@
                         }
 
                         div.innerHTML += '<br><br>' 
-                        let button = document.createElement("button")
-                        button.className = 'edit-button'
-                        button.innerHTML = 'Edit'
-                        div.append(button)
+                        let link = document.createElement('a')
+                        link.href=`http://127.0.0.1:5000/get_pelicula?pid=${peliculas[i].peliculaID}`
+                        link.className = 'edit-button'
+                        link.text = 'Edit'
+                        div.append(link)
                         mainContainer.appendChild(div)
-                        //mainContainer.appendChild(button)
                     }
                 }
             </script>
