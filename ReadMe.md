@@ -3,7 +3,7 @@
 # ToDo
 - [x] Pagina Menu
 - [x] Pagina de todas las peliculas
-- [ ] Presionar pelicula para modificar en Pagina de todas
+- [x] Presionar pelicula para modificar en Pagina de todas
 - [x] Pagina de registro de peliculas
 - [x] Pagina de resultados de busqueda
 - [x] Pagina de resultados de filtro por categoria

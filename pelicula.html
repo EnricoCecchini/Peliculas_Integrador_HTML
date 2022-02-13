@@ -27,9 +27,9 @@
     </div>
     <body class="body">
         <div>
-            <h2 class="pageTitle">Peliculas</h2>
+            <h2 class="pageTitle">Editar Pelicula</h2>
             <hr size="1" color="black">
-            <div class="peliculas" id="peliculas"></div>
+            <div class="pelicula" id="pelicula"></div>
             <script type="text/javascript">
 
                 let pid = localStorage.getItem('pid')
@@ -39,10 +39,32 @@
                 const API = `http://127.0.0.1:5000/get_pelicula?pid=${pid}`
                 fetch(API)
                 .then((res) => {return res.json()})
-                .then((p) => {console.log(p.pelicula); appendMovies(p.pelicula)})
+                .then((p) => {console.log(p.pelicula); editPelicula(p.pelicula)})
                 .catch((e) => console.log(e))
 
-                function appendMovies(pelicula) {                  
+                function editPelicula(pelicula) {  
+                    let pt = pelicula.titulo
+                    console.log(pt)
+                    let datos = document.getElementById('pelicula')
+
+                    let form = document.createElement('form')
+                    form.setAttribute('method', 'get')
+                    form.setAttribute('action', 'http://127.0.0.1:5000/modify_pelicula')
+
+                    let edit = document.createElement('input')
+                    edit.setAttribute("type", "submit");
+                    edit.setAttribute("value", "Submit");
+
+                    let titulo = document.createElement('input')
+                    titulo.setAttribute('type', 'text')
+                    titulo.setAttribute('titulo', 'Titulo')
+                    titulo.setAttribute('placeholder', {pt})
+
+                    form.appendChild(titulo)
+                    form.innerHTML += '<br><br>'
+                    form.appendChild(edit)
+
+                    document.getElementsByTagName("body")[0].appendChild(form)
                 }
             </script>
     </body>
