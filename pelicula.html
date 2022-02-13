@@ -8,6 +8,14 @@
         localStorage.setItem('busquedaParam', busquedaParam)
         return false
     }
+    function deletePelicula () {
+        let pid = localStorage.getItem('pid')
+        const API = `http://127.0.0.1:5000/del_pelicula?pid=${pid}`
+        fetch(API)
+        .then((res) => {return res.json()})
+        .catch((e) => console.log(e))
+        return false
+    }
 </script>
 
     <head>
@@ -153,5 +161,9 @@
                     document.getElementsByTagName("body")[0].appendChild(form)
                 }
             </script>
+            <div class="borrar" id="borrar"></div>
+            <form>
+                <input type="submit" value="Delete" onclick="deletePelicula()"/>
+            </form>
     </body>
 </html>

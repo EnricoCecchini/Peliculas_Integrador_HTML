@@ -7,5 +7,5 @@
 - [x] Pagina de registro de peliculas
 - [x] Pagina de resultados de busqueda
 - [x] Pagina de resultados de filtro por categoria
-- [ ] Pagina de modificar
-- [ ] Boton para borrar pelicula
+- [x] Pagina de modificar
+- [x] Boton para borrar pelicula
