@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="eng">
 <link rel="stylesheet" href="./styles.css">
+<script>
+    function passBusqueda () {
+        let busquedaParam = document.getElementById('busquedaParam').value
+        console.log(busquedaParam)
+        localStorage.setItem('busquedaParam', busquedaParam)
+        return false
+    }
+</script>
 
 <head>
     <title>Chak's Movie Catalogue</title>
@@ -12,10 +20,10 @@
             </div>
         </a>
         <div class="divSearch">
-            <form action="http://127.0.0.1:5000/buscar">
+            <form action="busqueda.html">
                 <label for="Search" aria-placeholder="param"></label>
-                <input type="text" id="param" name="param">
-                <input type="submit" value="Search">
+                <input type="text" id="busquedaParam" name="param">
+                <input type="submit" value="Search" onclick="passBusqueda()">
             </form>
         </div>
         <div>
