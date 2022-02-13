@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html lang="eng">
 <link rel="stylesheet" href="./styles.css">
+<script>
+    function passCategoria () {
+        let categoriaID = document.getElementById('cat').value
+        console.log(categoriaID)
+        localStorage.setItem('categoriaID', categoriaID)
+        return false
+    }
+
+    function passBusqueda () {
+        let busquedaParam = document.getElementById('busquedaParam').value
+        console.log(busquedaParam)
+        localStorage.setItem('busquedaParam', busquedaParam)
+        return false
+    }
+</script>
 
     <head>
         <title>Chak's Movie Catalogue</title>
@@ -9,10 +24,10 @@
         <h1>Chak's Movie Catalogue</h1>
     </div>
     <div class="divSearch">
-        <form action="http://127.0.0.1:5000/buscar">
+        <form action="busqueda.html">
             <label for="Search" aria-placeholder="param"></label>
             <input type="text" id="param" name="param">
-            <input type="submit" value="Search">
+            <input type="submit" value="Search" onclick="passBusqueda()">
         </form>
     </div>
     <body class="body">
@@ -24,14 +39,14 @@
                 <h2 class="indexMenu">Registrar Pelicula</h2>
             </a>
             <h2 class="indexMenu">Categorias</h2>
-            <form action="http://127.0.0.1:5000/dashboard_filtrado">
+            <form action="./peliculasCategoria.html">
                 <label for="Categoria"></label>
                 <select name="cat" id="cat">
                     <option class="categoryOption" value="1">Amor</option>
                     <option class="categoryOption" value="2">Accion</option>
                     <option class="categoryOption" value="3">Terror</option>
                 </select>
-                <input type="submit" value="Search">
+                <input type="submit" value="Search" onclick="passCategoria()">
             </form>
         </div>
     </body>

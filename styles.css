@@ -54,3 +54,7 @@
     border-width: 5px;
     border-radius: 15;
 }
+
+.horizontalLine {
+    width: 5px;
+}

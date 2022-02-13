@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="eng">
+<link rel="stylesheet" href="./styles.css">
+<script>
+    function passBusqueda () {
+        let busquedaParam = document.getElementById('busquedaParam').value
+        console.log(busquedaParam)
+        localStorage.setItem('busquedaParam', busquedaParam)
+        return false
+    }
+</script>
+
+<head>
+    <title>Chak's Movie Catalogue</title>
+</head>
+    <body class="body">
+        <a href="./Index.html">
+            <div class="head">
+                <h1>Chak's Movie Catalogue</h1>
+            </div>
+        </a>
+        <div class="divSearch">
+            <form action="busqueda.html">
+                <label for="Search" aria-placeholder="param"></label>
+                <input type="text" id="busquedaParam" name="param">
+                <input type="submit" value="Search" onclick="passBusqueda()">
+            </form>
+        </div>
+        <div>
+            <h2 class="pageTitle">Peliculas</h2>
+            <hr size="1" color="black">
+            <div class="peliculas" id="peliculas"></div>
+            <script type="text/javascript">
+                
+                let param = localStorage.getItem('busquedaParam')
+                console.log(param)
+                localStorage.removeItem("busquedaParam")
+                
+                const API = `http://127.0.0.1:5000/buscar?param=${param}`
+                console.log(API)
+                fetch(API)
+                .then((res) => {return res.json()})
+                .then((p) => {console.log(p.peliculas); appendMovies(p.peliculas)})
+                .catch((e) => console.log(e))
+
+                function appendMovies(peliculas) {
+                    var mainContainer = document.getElementById("peliculas")
+
+                    for (var i = 0; i < peliculas.length; i++) {
+                        let div = document.createElement('div')
+                        div.className = 'grid-item'
+                        div.setAttribute('src', `http://127.0.0.1:5000/get_pelicula?pid=${peliculas[i].peliculaID}`)
+                        div.innerHTML += 'Pelicula: '.bold() + peliculas[i].titulo + '<br>'
+                        div.innerHTML += 'Director: '.bold() + peliculas[i].director + '<br>'
+                        div.innerHTML += 'Anio: '.bold() + peliculas[i].anio + '<br>'
+                        div.innerHTML += 'Categoria: '.bold() + peliculas[i].categoria + '<br>'
+                        div.innerHTML += 'Duracion: '.bold() + peliculas[i].duracion + ' horas <br><br>'
+                        div.innerHTML += 'Protagonistas: <br>'.bold()
+                        //console.log(peliculas[i].protagonista)
+                        // for (var j = 0; j < peliculas[i].protagonista.length; j++){
+                        //     div.innerHTML += `${j+1}: `.bold() + peliculas[i].protagonista[j].nombre + '<br>'
+                        //     //console.log(peliculas[i].protagonista[j].protagID)
+                        // }
+
+                        div.innerHTML += '<br><br>' 
+                        let link = document.createElement('a')
+                        link.href=`http://127.0.0.1:5000/get_pelicula?pid=${peliculas[i].peliculaID}`
+                        link.className = 'edit-button'
+                        link.text = 'Edit'
+                        div.append(link)
+                        mainContainer.appendChild(div)
+                    }
+                }
+            </script>
+        </div>
+    </body>
+</html>
