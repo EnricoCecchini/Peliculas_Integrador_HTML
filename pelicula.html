@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="eng">
+<link rel="stylesheet" href="./styles.css">
+<script>
+    function passBusqueda () {
+        let busquedaParam = document.getElementById('busquedaParam').value
+        console.log(busquedaParam)
+        localStorage.setItem('busquedaParam', busquedaParam)
+        return false
+    }
+</script>
+
+    <head>
+        <title>Chak's Movie Catalogue</title>
+    </head>
+    <a href="./Index.html">
+        <div class="head">
+            <h1>Chak's Movie Catalogue</h1>
+        </div>
+    </a>
+    <div class="divSearch">
+        <form action="busqueda.html">
+            <label for="Search" aria-placeholder="param"></label>
+            <input type="text" id="param" name="param">
+            <input type="submit" value="Search" onclick="passBusqueda()">
+        </form>
+    </div>
+    <body class="body">
+        <div>
+            <h2 class="pageTitle">Peliculas</h2>
+            <hr size="1" color="black">
+            <div class="peliculas" id="peliculas"></div>
+            <script type="text/javascript">
+
+                let pid = localStorage.getItem('pid')
+                //localStorage.removeItem("pid")
+                console.log(pid)
+
+                const API = `http://127.0.0.1:5000/get_pelicula?pid=${pid}`
+                fetch(API)
+                .then((res) => {return res.json()})
+                .then((p) => {console.log(p.pelicula); appendMovies(p.pelicula)})
+                .catch((e) => console.log(e))
+
+                function appendMovies(pelicula) {                  
+                }
+            </script>
+    </body>
+</html>

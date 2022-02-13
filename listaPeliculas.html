@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="eng">
 <link rel="stylesheet" href="./styles.css">
+<script>
+    function passBusqueda () {
+        let busquedaParam = document.getElementById('busquedaParam').value
+        console.log(busquedaParam)
+        localStorage.setItem('busquedaParam', busquedaParam)
+        return false
+    }
+</script>
 
 <head>
     <title>Chak's Movie Catalogue</title>
@@ -12,10 +20,10 @@
             </div>
         </a>
         <div class="divSearch">
-            <form action="http://127.0.0.1:5000/buscar">
+            <form action="busqueda.html">
                 <label for="Search" aria-placeholder="param"></label>
-                <input type="text" id="param" name="param">
-                <input type="submit" value="Search">
+                <input type="text" id="busquedaParam" name="param">
+                <input type="submit" value="Search" onclick="passBusqueda()">
             </form>
         </div>
         <div>
@@ -34,8 +42,9 @@
 
                     for (var i = 0; i < peliculas.length; i++) {
                         let div = document.createElement('div')
+                        let pid = peliculas[i].peliculaID
                         div.className = 'grid-item'
-                        div.setAttribute('src', `http://127.0.0.1:5000/get_pelicula?pid=${peliculas[i].peliculaID}`)
+                        div.setAttribute('src', `http://127.0.0.1:5000/get_pelicula?pid=${pid}`)
                         div.innerHTML += 'Pelicula: '.bold() + peliculas[i].titulo + '<br>'
                         div.innerHTML += 'Director: '.bold() + peliculas[i].director + '<br>'
                         div.innerHTML += 'Anio: '.bold() + peliculas[i].anio + '<br>'
@@ -49,11 +58,23 @@
                         }
 
                         div.innerHTML += '<br><br>' 
-                        let link = document.createElement('a')
-                        link.href=`http://127.0.0.1:5000/get_pelicula?pid=${peliculas[i].peliculaID}`
-                        link.className = 'edit-button'
-                        link.text = 'Edit'
-                        div.append(link)
+                        // let link = document.createElement('a')
+                        // link.href=`http://127.0.0.1:5000/get_pelicula?pid=${peliculas[i].peliculaID}`
+                        // link.className = 'edit-button'
+                        // link.text = 'Edit'
+                        // div.append(link)
+                        let editButton = document.createElement('button')
+                        editButton.className= 'edit-button'
+                        editButton.innerHTML = 'Edit'
+                        editButton.id = 'pid'
+                        editButton.onclick= function () {
+                            console.log(pid)
+                            localStorage.setItem('pid', pid)
+                            console.log(pid)
+                            location.href = './pelicula.html'
+                            return false
+                        }
+                        div.append(editButton)
                         mainContainer.appendChild(div)
                     }
                 }
