@@ -27,7 +27,7 @@
             </form>
         </div>
         <div>
-            <h2 class="pageTitle">Peliculas</h2>
+            <h2 class="pageTitle">Películas</h2>
             <hr size="1" color="black">
             <div class="peliculas" id="peliculas"></div>
             <script type="text/javascript">
@@ -51,11 +51,11 @@
                         let pid = peliculas[i].peliculaID
                         div.className = 'grid-item'
                         //div.setAttribute('src', `http://127.0.0.1:5000/get_pelicula?pid=${peliculas[i].peliculaID}`)
-                        div.innerHTML += 'Pelicula: '.bold() + peliculas[i].titulo + '<br>'
+                        div.innerHTML += 'Título: '.bold() + peliculas[i].titulo + '<br>'
                         div.innerHTML += 'Director: '.bold() + peliculas[i].director + '<br>'
-                        div.innerHTML += 'Anio: '.bold() + peliculas[i].anio + '<br>'
-                        div.innerHTML += 'Categoria: '.bold() + peliculas[i].categoria + '<br>'
-                        div.innerHTML += 'Duracion: '.bold() + peliculas[i].duracion + ' horas <br><br>'
+                        div.innerHTML += 'Año: '.bold() + peliculas[i].anio + '<br>'
+                        div.innerHTML += 'Categoría: '.bold() + peliculas[i].categoria + '<br>'
+                        div.innerHTML += 'Duración: '.bold() + peliculas[i].duracion + ' horas <br><br>'
                         div.innerHTML += 'Protagonistas: <br>'.bold()
                         //console.log(peliculas[i].protagonista)
                         // for (var j = 0; j < peliculas[i].protagonista.length; j++){
