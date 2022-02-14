@@ -27,14 +27,14 @@
             </form>
         </div>
         <div>
-            <h2 class="pageTitle">Películas</h2>
+            <h2 class="pageTitle">Resultados de Busqueda</h2>
             <hr size="1" color="black">
             <div class="peliculas" id="peliculas"></div>
             <script type="text/javascript">
                 
                 let param = localStorage.getItem('busquedaParam')
                 console.log(param)
-                localStorage.removeItem("busquedaParam")
+                //localStorage.removeItem("busquedaParam")
                 
                 const API = `http://127.0.0.1:5000/buscar?param=${param}`
                 console.log(API)
@@ -58,10 +58,10 @@
                         div.innerHTML += 'Duración: '.bold() + peliculas[i].duracion + ' horas <br><br>'
                         div.innerHTML += 'Protagonistas: <br>'.bold()
                         //console.log(peliculas[i].protagonista)
-                        // for (var j = 0; j < peliculas[i].protagonista.length; j++){
-                        //     div.innerHTML += `${j+1}: `.bold() + peliculas[i].protagonista[j].nombre + '<br>'
-                        //     //console.log(peliculas[i].protagonista[j].protagID)
-                        // }
+                        for (var j = 0; j < peliculas[i].protagonista.length; j++){
+                            div.innerHTML += `${j+1}: `.bold() + peliculas[i].protagonista[j].nombre + '<br>'
+                            //console.log(peliculas[i].protagonista[j].protagID)
+                        }
 
                         div.innerHTML += '<br><br>' 
                         let editButton = document.createElement('button')
