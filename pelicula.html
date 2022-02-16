@@ -94,7 +94,9 @@
                     duracion.setAttribute('placeholder', `${pelicula.duracion} horas`)
 
                     let anio = document.createElement('input')
-                    anio.setAttribute('type', 'text')
+                    anio.setAttribute('type', 'number')
+                    categoria.setAttribute('min', '1900')
+                    categoria.setAttribute('max', '2099')
                     anio.setAttribute('name', 'anio')
                     anio.setAttribute('value', `${pelicula.anio}`)
                     anio.setAttribute('placeholder', `${pelicula.anio}`)
