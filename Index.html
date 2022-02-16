@@ -26,11 +26,9 @@
 </head>
     <body class="body">
 		<header>
-			<a href="./Index.html">
-				<div class="head">
-					<h1>Chak's Movie Catalogue</h1>
-				</div>
-			</a>
+			<div class="head">
+                <h1>Chak's Movie Catalogue</h1>
+            </div>
 			<div class="divSearch">
 				<form action="busqueda.html">
 					<label for="Search" aria-placeholder="param"></label>
@@ -44,10 +42,7 @@
                     <li><a href="./register.html">Registrar</a></li>
                 </ul>
             </nav>
-        </header>
-        <section>
-			<h2 class="pageTitle">Películas</h2>
-			<div class="categoria">
+            <div class="categoria">
 				<label>Categoria</label>
                 <select name="cat" id="cat">
                     <option value="0">Todo</option>
@@ -57,6 +52,9 @@
                 </select>
                 <input type="submit" value="Filtrar" onclick="passCategoria()">
 			</div>
+        </header>
+        <section>
+			<h2 class="pageTitle">Películas</h2>
             <div class="peliculas" id="peliculas"></div>
             <script type="text/javascript">
                 const API = 'http://127.0.0.1:5000/dashboard'
