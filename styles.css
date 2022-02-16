@@ -9,6 +9,38 @@
     font-style: italic;
 }
 
+.pageName {
+    font-size:60px;
+    text-align: center;
+}
+
+.nav ul {
+    margin: 0
+}
+
+.nav li {
+    display: inline;
+}
+
+.nav a {
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 30px;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.main-nav {
+    text-align: center;
+    font-weight: lighter;
+    border-bottom: 1px solid black;
+}
+
+.nav a:hover {
+    background-color: lightslategray;
+    border-radius: 15px;
+}
+
 .pageTitle {
     font-size: 50px;
 }
@@ -44,7 +76,19 @@
     font-size: 40px;
 }
 
-.categoryOption {
+.categoria {
+    text-align: right;
+}
+
+.categoria label{
+    font-size: 20px;
+}
+
+.categoria select{
+    font-size: 20px;
+}
+
+.categoria option{
     font-size: 20px;
 }
 
@@ -69,3 +113,4 @@
 .horizontalLine {
     width: 5px;
 }
+

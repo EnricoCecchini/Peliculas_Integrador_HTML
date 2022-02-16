@@ -2,6 +2,17 @@
 <html lang="eng">
 <link rel="stylesheet" href="./styles.css">
 <script>
+    function passCategoria () {
+        let categoriaID = document.getElementById('cat').value
+        console.log(categoriaID)
+
+        if (categoriaID !== 0){
+            localStorage.setItem('categoriaID', categoriaID)
+            location.replace('./peliculasCategoria.html')
+        }
+        return false
+    }
+    
     function passBusqueda () {
         let busquedaParam = document.getElementById('busquedaParam').value
         console.log(busquedaParam)
@@ -11,9 +22,10 @@
 </script>
 
 <head>
-    <title>Chak's Movie Catalogue</title>
+    <title>Categoria</title>
 </head>
-    <body class="body">
+<body class="body">
+    <header>
         <a href="./Index.html">
             <div class="head">
                 <h1>Chak's Movie Catalogue</h1>
@@ -26,21 +38,40 @@
                 <input type="submit" value="Search" onclick="passBusqueda()">
             </form>
         </div>
-        <div>
-            <h2 class="pageTitle">Películas por Categoria</h2>
-            <hr size="1" color="black">
+        <nav class="nav main-nav">
+            <ul>
+                <li><a href="./index.html">Peliculas</a></li>
+                <li><a href="./register.html">Registrar</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h2 class="pageTitle">Películas por Categoria</h2>
+        <div class="categoria">
+            <label>Categoria</label>
+            <select name="cat" id="cat">
+                <option value="0">Todo</option>
+                <option value="1">Amor</option>
+                <option value="2">Accion</option>
+                <option value="3">Terror</option>
+            </select>
+            <input type="submit" value="Filtrar" onclick="passCategoria()">
+        </div>
+        <div class="peliculas" id="peliculas"></div>
             <div class="peliculas" id="peliculas"></div>
             <script type="text/javascript">
-                
                 let categoriaID = localStorage.getItem('categoriaID')
                 localStorage.removeItem("categoriaID")
-                //console.log(categoriaID)
-                
+                console.log(categoriaID)
+                if (categoriaID == 0) {
+                    location.replace('./Index.html')
+                }
+                                
                 const API = `http://127.0.0.1:5000/dashboard_filtrado?cat=${categoriaID}`
                 //console.log(API)
                 fetch(API)
                 .then((res) => {return res.json()})
-                .then((p) => {console.log(p.peliculas); appendMovies(p.peliculas)})
+                .then((p) => {appendMovies(p.peliculas)})
                 .catch((e) => console.log(e))
 
                 function appendMovies(peliculas) {
