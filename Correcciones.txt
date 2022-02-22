@@ -7,4 +7,5 @@ Codigo
 -*Mensaje de confirmacion
 -*Pop Up en vez de JSON de confirmacion
 -*Estandarizar (Todo en espanol)
+-*Borrar en catalogo
 -Iconos en vez de botones
