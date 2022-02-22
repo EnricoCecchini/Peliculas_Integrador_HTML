@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+html, body {
+    background-color: beige;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.pageName {
+    font-size:60px;
+    text-align: center;
+}
+
+.nav ul {
+    margin: 0
+}
+
+.nav li {
+    display: inline;
+}
+
+.nav a {
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 30px;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.main-nav {
+    text-align: center;
+    font-weight: lighter;
+    border-bottom: 1px solid black;
+}
+
+.nav a:hover {
+    background-color: lightslategray;
+    border-radius: 15px;
+}
+
+.pageTitle {
+    font-size: 40px;
+}
+
+.peliculas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 10px;
+}
+
+.categoria {
+    text-align: right;
+}
+
+.categoria label{
+    font-size: 20px;
+}
+
+.categoria select{
+    font-size: 20px;
+}
+
+.categoria option{
+    font-size: 20px;
+}
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 20px;
+    text-align: left;
+    margin: 20px;
+    margin-bottom: 20px;
+}
+
+.searchResultados {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    padding: 10px;
+}
+
+.searchResultados-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 20px;
+    text-align: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.edit-button {
+    text-align: center;
+    vertical-align: bottom;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 8px;
+}

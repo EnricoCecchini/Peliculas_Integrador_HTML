@@ -1,0 +1,11 @@
+Pagina:
+-*Cap en tamano de entrada de datos de pelicula
+-Mensajes de error
+-*Menu de navegacion
+-Mostrar solo cierta cantidad de resultados por pagina
+
+API:
+-*Ordenar peliculas por Titulo
+
+Documentacion
+-Principios de diseno
