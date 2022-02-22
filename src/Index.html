@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="esp">
 <link rel="stylesheet" href="./styles.css">
 <script>
     function passCategoria () {
@@ -12,64 +12,65 @@
         }
         return false
     }
-
+	
     function passBusqueda () {
         let busquedaParam = document.getElementById('busquedaParam').value
-        console.log(busquedaParam)
+        console.log( busquedaParam )
         localStorage.setItem('busquedaParam', busquedaParam)
         return false
     }
+
+    function deletePelicula (pid) {
+        const API = `http://127.0.0.1:5000/del_pelicula?pid=${pid}`
+        fetch(API)
+        .then((res) => {console.log(res.json())})
+        .catch((e) => console.log(e))
+        alert('Pelicula borrada exitosamente!')
+        return false
+    }
+
 </script>
 
 <head>
-    <title>Categoria</title>
+    <title>Peliculas</title>
 </head>
-<body class="body">
-    <header>
-        <div class="head">
-            <h1>Chak's Movie Catalogue</h1>
-        </div>
-        <div class="divSearch">
-            <form action="busqueda.html">
-                <label for="Search" aria-placeholder="param"></label>
-                <input type="text" id="busquedaParam" name="param">
-                <input type="submit" value="Search" onclick="passBusqueda()">
-            </form>
-        </div>
-        <nav class="nav main-nav">
-            <ul>
-                <li><a href="./index.html">Peliculas</a></li>
-                <li><a href="./register.html">Registrar</a></li>
-            </ul>
-        </nav>
-        <div class="categoria">
-            <label>Categoria</label>
-            <select name="cat" id="cat">
-                <option value="0">Todo</option>
-                <option value="1">Amor</option>
-                <option value="2">Accion</option>
-                <option value="3">Terror</option>
-            </select>
-            <input type="submit" value="Filtrar" onclick="passCategoria()">
-        </div>
-    </header>
-    <section>
-        <h2 class="pageTitle">Películas por Categoria</h2>
-        <div class="peliculas" id="peliculas"></div>
+    <body class="body">
+		<header>
+			<div class="head">
+                <h1>Chak's Movie Catalogue</h1>
+            </div>
+			<div class="divSearch">
+				<form action="busqueda.html">
+					<label for="Search" aria-placeholder="param"></label>
+					<input type="text" id="busquedaParam" name="param" maxlength="50">
+					<input type="submit" value="Buscar" onclick="passBusqueda()">
+				</form>
+			</div>
+            <nav class="nav main-nav">
+                <ul>
+                    <li><a href="./index.html">Películas</a></li>
+                    <li><a href="./register.html">Registrar</a></li>
+                </ul>
+            </nav>
+            <div class="categoria">
+				<label>Categoría</label>
+                <select name="cat" id="cat">
+                    <option value="0">Todo</option>
+                    <option value="1">Amor</option>
+                    <option value="2">Acción</option>
+                    <option value="3">Terror</option>
+                </select>
+                <input type="submit" value="Filtrar" onclick="passCategoria()">
+			</div>
+        </header>
+        <section>
+			<h2 class="pageTitle">Películas</h2>
             <div class="peliculas" id="peliculas"></div>
             <script type="text/javascript">
-                let categoriaID = localStorage.getItem('categoriaID')
-                localStorage.removeItem("categoriaID")
-                console.log(categoriaID)
-                if (categoriaID == 0) {
-                    location.replace('./Index.html')
-                }
-                                
-                const API = `http://127.0.0.1:5000/dashboard_filtrado?cat=${categoriaID}`
-                //console.log(API)
+                const API = 'http://127.0.0.1:5000/dashboard'
                 fetch(API)
                 .then((res) => {return res.json()})
-                .then((p) => {appendMovies(p.peliculas)})
+                .then((p) => {console.log(p.peliculas); appendMovies(p.peliculas)})
                 .catch((e) => console.log(e))
 
                 function appendMovies(peliculas) {
@@ -79,23 +80,20 @@
                         let div = document.createElement('div')
                         let pid = peliculas[i].peliculaID
                         div.className = 'grid-item'
-                        //div.setAttribute('src', `http://127.0.0.1:5000/get_pelicula?pid=${pid}`)
                         div.innerHTML += 'Título: '.bold() + peliculas[i].titulo + '<br>'
                         div.innerHTML += 'Director: '.bold() + peliculas[i].director + '<br>'
                         div.innerHTML += 'Año: '.bold() + peliculas[i].anio + '<br>'
                         div.innerHTML += 'Categoría: '.bold() + peliculas[i].categoria + '<br>'
                         div.innerHTML += 'Duración: '.bold() + peliculas[i].duracion + ' horas <br><br>'
                         div.innerHTML += 'Protagonistas: <br>'.bold()
-                        console.log(peliculas[i].protagonista)
                         for (var j = 0; j < peliculas[i].protagonista.length; j++){
                             div.innerHTML += `${j+1}: `.bold() + peliculas[i].protagonista[j].nombre + '<br>'
-                            //console.log(peliculas[i].protagonista[j].protagID)
                         }
 
                         div.innerHTML += '<br><br>' 
                         let editButton = document.createElement('button')
                         editButton.className= 'edit-button'
-                        editButton.innerHTML = 'Edit'
+                        editButton.innerHTML = 'Editar'
                         editButton.id = 'pid'
                         editButton.onclick= function () {
                             console.log(pid)
@@ -104,7 +102,19 @@
                             location.href = './pelicula.html'
                             return false
                         }
+
+                        let deleteButton = document.createElement('button')
+                        deleteButton.className= 'delete-button'
+                        deleteButton.innerHTML = 'Borrar'
+                        deleteButton.id = 'pid'
+                        deleteButton.onclick= function () {
+                            console.log(pid)
+                            deletePelicula(pid)
+                            return false
+                        }
+
                         div.append(editButton)
+                        div.append(deleteButton)
                         mainContainer.appendChild(div)
                     }
                 }

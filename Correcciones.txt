@@ -1,0 +1,10 @@
+Documentacion
+-*Estandares de Construccion
+-*Definir estilos (Tipografia, colores, etc)
+-*Actualizar screenshots de diseno final
+
+Codigo
+-*Mensaje de confirmacion
+-*Pop Up en vez de JSON de confirmacion
+-*Estandarizar (Todo en espanol)
+-*Borrar en catalogo

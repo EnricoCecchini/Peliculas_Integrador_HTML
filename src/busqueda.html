@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="esp">
 <link rel="stylesheet" href="./styles.css">
 <script>
     function passCategoria () {
@@ -19,6 +19,15 @@
         localStorage.setItem('busquedaParam', busquedaParam)
         return false
     }
+
+    function deletePelicula (pid) {
+        const API = `http://127.0.0.1:5000/del_pelicula?pid=${pid}`
+        fetch(API)
+        .then((res) => {console.log(res.json())})
+        .catch((e) => console.log(e))
+        alert('Pelicula borrada exitosamente')
+        return false
+    }
 </script>
 
 <head>
@@ -32,18 +41,18 @@
             <div class="divSearch">
                 <form action="busqueda.html">
                     <label for="Search" aria-placeholder="param"></label>
-                    <input type="text" id="busquedaParam" name="param">
-                    <input type="submit" value="Search" onclick="passBusqueda()">
+                    <input type="text" id="busquedaParam" name="param" maxlength="50">
+                    <input type="submit" value="Buscar" onclick="passBusqueda()">
                 </form>
             </div>
             <nav class="nav main-nav">
                 <ul>
-                    <li><a href="./index.html">Peliculas</a></li>
+                    <li><a href="./index.html">Películas</a></li>
                     <li><a href="./register.html">Registrar</a></li>
                 </ul>
             </nav>
             <div class="categoria">
-                <label>Categoria</label>
+                <label>Categoría</label>
                 <select name="cat" id="cat">
                     <option value="0">Todo</option>
                     <option value="1">Amor</option>
@@ -101,7 +110,19 @@
                             location.href = './pelicula.html'
                             return false
                         }
+
+                        let deleteButton = document.createElement('button')
+                        deleteButton.className= 'delete-button'
+                        deleteButton.innerHTML = 'Borrar'
+                        deleteButton.id = 'pid'
+                        deleteButton.onclick= function () {
+                            console.log(pid)
+                            deletePelicula(pid)
+                            return false
+                        }
+
                         div.append(editButton)
+                        div.append(deleteButton)
                         mainContainer.appendChild(div)
                     }
                 }

@@ -4,6 +4,7 @@
 }
 
 .head {
+    font-family:Georgia;
     text-align: center;
     font-size: 40px;
     font-style: italic;
@@ -102,7 +103,7 @@
 }
 
 .delete-button {
-    font-size: 15px;
+    font-size: 20px;
     position: absolute;
     bottom: 5px;
     border-width: 5px;
