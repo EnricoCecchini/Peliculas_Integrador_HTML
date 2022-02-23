@@ -8,3 +8,6 @@ Codigo
 -*Pop Up en vez de JSON de confirmacion
 -*Estandarizar (Todo en espanol)
 -*Borrar en catalogo
+-Boton de confirmacion al borrar pelicula
+-Pop up de confirmacion al editar pelicula
+-Probar con SonarQ

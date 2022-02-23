@@ -230,7 +230,7 @@ def get_pelicula():
     return jsonify({'pelicula': pelicula})
 
 
-@app.route('/registrar_pelicula')
+@app.route('/registrar_pelicula', methods=['GET', 'POST'])
 def registrar_pelicula():
     titulo = request.args.get('titulo')
     anio = request.args.get('anio')
@@ -403,7 +403,7 @@ def modify_pelicula():
 
     #return jsonify(actores)
 
-    protag = protag.split(',')
+    protag = protag.strip().split(',')
 
     for p in range(len(protag)):
         existe = loaf.query(f''' SELECT protagonistaID FROM protagonista WHERE nombre='{protag[p]}' ''')
