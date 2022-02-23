@@ -21,12 +21,17 @@
     }
 
     function deletePelicula (pid) {
-        const API = `http://127.0.0.1:5000/del_pelicula?pid=${pid}`
-        fetch(API)
-        .then((res) => {console.log(res.json())})
-        .catch((e) => console.log(e))
-        alert('Pelicula borrada exitosamente')
-        return false
+        let text = 'Presiona confirmar para borrar la pelicula'
+        if (confirm(text) == true) {
+            const API = `http://127.0.0.1:5000/del_pelicula?pid=${pid}`
+            fetch(API)
+            .then((res) => {console.log(res.json())})
+            .catch((e) => console.log(e))
+            alert('Pelicula borrada exitosamente!')
+            return false
+        } else {
+            alert('La pelicula no fue borrada')
+        }
     }
 </script>
 
